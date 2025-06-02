@@ -36,6 +36,11 @@ function runUnitTests() {
     if (dividir(7, 1) !== 7) throw new Error("Esperado 7");
   });
 
+function dividir(a, b) {
+  if (b === 0) throw new Error("Divisão por zero");
+  return a / b;
+}
+
   testar("UNIT - Divisão por zero deve lançar erro", () => {
     let erro = false;
     try {
