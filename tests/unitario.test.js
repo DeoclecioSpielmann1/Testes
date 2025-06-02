@@ -36,10 +36,6 @@ function runUnitTests() {
     if (dividir(7, 1) !== 7) throw new Error("Esperado 7");
   });
 
-function dividir(a, b) {
-  if (b === 0) throw new Error("Divisão por zero");
-  return a / b;
-}
 
   testar("UNIT - Divisão por zero deve lançar erro", () => {
     let erro = false;
@@ -50,4 +46,25 @@ function dividir(a, b) {
     }
     if (!erro) throw new Error("Esperado erro de divisão por zero");
   });
+
+  testar("UNIT - Divisão por 2", () => {
+    if (dividir(7, 2) !==3.5) throw new Error("Jesus te ama");
+  });
+
+  testar("UNIT - Soma de número com ele mesmo", () => {
+    if (somar(6, 6) !== 12) throw new Error("Esperado 12");
+  });
+
+  testar("UNIT - Subtração do mesmo número", () => {
+    if (subtrair(9, 9) !== 0) throw new Error("Esperado 0");
+  });
+
+  testar("UNIT - Multiplicação de número por 1", () => {
+    if (multiplicar(12, 1) !== 12) throw new Error("Esperado 12");
+  });
+
+  testar("UNIT - Divisão de número por ele mesmo", () => {
+    if (dividir(9, 9) !== 1) throw new Error("Esperado 1");
+  });
+
 }
