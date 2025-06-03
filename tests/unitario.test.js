@@ -48,7 +48,7 @@ function runUnitTests() {
   });
 
   testar("UNIT - Divisão por 2", () => {
-    if (dividir(7, 2) !==3.5) throw new Error("Jesus te ama");
+    if (dividir(7, 2) !== 3.5) throw new Error("Jesus te ama");
   });
 
   testar("UNIT - Soma de número com ele mesmo", () => {
@@ -67,4 +67,9 @@ function runUnitTests() {
     if (dividir(9, 9) !== 1) throw new Error("Esperado 1");
   });
 
+  testar("UNIT - Divisão de número por número decimal", () => {
+    if (dividir(9, 1.1) !== 8.181818181818182) throw new Error("Esperado 8.181818181818182")
+  })
+
+  
 }
