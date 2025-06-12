@@ -4,31 +4,22 @@ function runComponentTests() {
     if (!form) throw new Error("Formulário não encontrado");
   });
 
-  testar("COMPONENT - Inputs devem receber valores corretamente", () => {
-    const input1 = document.getElementById("num1");
-    const input2 = document.getElementById("num2");
-
-    input1.value = "10";
-    input2.value = "5";
-
-    if (input1.value !== "10" || input2.value !== "5") {
-      throw new Error("Inputs não aceitaram valores corretamente");
-    }
+}
+function runComponentTests() {
+  testar("COMPONENT - Botões de aluguel devem estar presentes na página", () => {
+    const botoes = document.querySelectorAll(".rent-btn");
+    if (botoes.length === 0) throw new Error("Nenhum botão de aluguel encontrado");
   });
 
-  testar("COMPONENT - Formulário dispara evento de submit", () => {
-    const form = document.getElementById("form");
-    let chamado = false;
+  testar("COMPONENT - Mensagem aparece ao clicar em 'Alugar'", () => {
+    const botao = document.querySelector(".rent-btn");
+    if (!botao) throw new Error("Botão de aluguel não encontrado");
 
-    const listener = (e) => {
-      chamado = true;
-      e.preventDefault();
-      form.removeEventListener("submit", listener);
-    };
+    botao.click();
 
-    form.addEventListener("submit", listener);
-    form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-
-    if (!chamado) throw new Error("Evento de submit não foi chamado");
+    const msgDiv = document.getElementById("msg-Fiat Uno");
+    if (!msgDiv || msgDiv.textContent.trim() === "") {
+      throw new Error("Mensagem de aluguel não foi exibida");
+    }
   });
 }
